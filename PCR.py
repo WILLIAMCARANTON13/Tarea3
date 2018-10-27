@@ -33,9 +33,14 @@ def cov_matrix(matriz):
 	return cov/(N-1)
 
 
-print(len(valores[:100]))
+covarianza=cov_matrix(np.transpose(valores[:10]))
 
-print(np.cov(valores[:100])-cov_matrix(np.transpose(valores[:100])))
+a_valores,a_vectores=np.linalg.eig(covarianza)
+
+for i in range(len(a_valores)):
+	print("Autovector: ",a_vectores[i],"   autovalor correspondiente: ",a_valores[i])
+
+
 
 
 

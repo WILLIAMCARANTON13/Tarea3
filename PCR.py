@@ -35,10 +35,25 @@ def cov_matrix(matriz):
 
 covarianza=cov_matrix(np.transpose(valores[:10]))
 
-a_valores,a_vectores=np.linalg.eig(covarianza)
+a_val,a_vec=np.linalg.eig(covarianza)
 
-for i in range(len(a_valores)):
-	print("Autovector: ",a_vectores[i],"   autovalor correspondiente: ",a_valores[i])
+for i in range(len(a_val)):
+	print("Autovector: ",a_vec[i],"   autovalor correspondiente: ",a_val[i])
+
+a_val=np.ndarray.tolist(a_val)
+a_vec=np.ndarray.tolist(a_vec)
+
+indice_mayor_a_val=a_val.index(max(a_val))
+PC1=a_vec[indice_mayor_a_val]
+
+a_val2=a_val
+a_val[indice_mayor_a_val]=0
+
+indice_mayor_a_val_2=a_val.index(max(a_val2))
+PC2=a_vec[indice_mayor_a_val_2]
+
+
+print("\n Las direcciones a las que los datos muestran mayor tendencia son los autovalores:\n\n",PC1,"\n\n",PC2,"\n\n","elegidos basándose en sus autovalores.")
 
 
 

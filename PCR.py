@@ -82,7 +82,7 @@ plt.xlabel("PC1")
 plt.ylabel("PC2")
 plt.savefig("CarantonWilliam_PCA.pdf")
 
-
+print("\n El PCA si funciona, puesto a que es posible distinguir entre tumores malignos y benignos, siendo los benignos aquellos puntos de color azul ubicado en la esquina superior izquierda")
 
 
 

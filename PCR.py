@@ -32,8 +32,9 @@ def cov_matrix(matriz):
 	#	return 2*np.array(cov)/(N)
 	return cov/(N-1)
 
+work_data=valores
 
-covarianza=cov_matrix(valores[:50])
+covarianza=cov_matrix(work_data)
 
 
 a_val,a_vec=np.linalg.eig(covarianza)
@@ -57,10 +58,34 @@ indice_mayor_a_val_2=a_val.index(max(a_val2))
 PC2=a_vec[indice_mayor_a_val_2]
 
 
-print("\n Las direcciones a las que los datos muestran mayor tendencia son los autovalores:\n\n",PC1,"\n\n",PC2,"\n\n","elegidos basándose en sus autovalores.")
+print("\n Las direcciones a las que los datos muestran mayor tendencia son los autovectores:\n\n PC1 = ",
+	  PC1,"\n\n PC2 = ",PC2,"\n\n","elegidos basándose en sus autovalores.")
 
-#print(len(PC1))
 
+X=[]
+Y=[]
+
+for i in range(len(work_data)):
+	X.append(np.dot(work_data[i],PC1))
+	Y.append(np.dot(work_data[i],PC2))
+
+color=[]
+
+for i in range(len(work_data)):
+	if diagnostico[i]=="M":
+		color.append((1,0,0))
+	elif diagnostico[i]=="B":
+		color.append((0,0,1))
+
+plt.figure()
+plt.scatter(X,Y,s=1,c=color)
+plt.scatter(X[0],Y[0],c=(1,0,0),s=1,label="M")
+plt.scatter(X[19],Y[19],c=(0,0,1),s=1,label="B")
+plt.legend(loc=4)
+plt.grid(True)
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.savefig("CarantonWilliam_PCA.pdf")
 
 
 

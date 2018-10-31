@@ -33,4 +33,7 @@ IMG=np.fft.ifft2(F*filtro_real)
 plt.imshow(-IMG.real,cmap='Greys')
 plt.savefig("CarantonWilliam_Imagen_Filtrada.pdf")
 
+print("\n El PCA si funciona, puesto a que es posible distinguir entre tumores malignos y benignos, siendo los benignos aquellos puntos de color azul ubicado en la esquina superior izquierda")
+
+
 

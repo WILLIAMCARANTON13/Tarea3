@@ -26,10 +26,7 @@ def cov_matrix(matriz):
 			for i in range(N):
 				s+=(matriz[i,j]-np.mean(matriz[:,j]))*(matriz[i,k]-np.mean(matriz[:,k]))
 			cov[j,k]+=s
-	#if(N%2==1):
-	#	return 2*np.array(cov)/(N+1)
-	#else:
-	#	return 2*np.array(cov)/(N)
+
 	return cov/(N-1)
 
 work_data=valores
@@ -39,8 +36,6 @@ covarianza=cov_matrix(work_data)
 
 a_val,a_vec=np.linalg.eig(covarianza)
 
-#a_vec=np.real(a_vec)
-#a_val=np.real(a_val)
 
 for i in range(len(a_val)):
 	print("Autovector: ",a_vec[i],"   autovalor correspondiente: ",a_val[i])
